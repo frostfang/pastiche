@@ -6,8 +6,8 @@ var us = require("underscore");
 var ig = require('instagram-node').instagram();
 
 // Every call to `ig.use()` overrides the `client_id/client_secret` or `access_token` previously entered if they exist.
-ig.use({ client_id: process.env.IG_CLIENT_ID, client_secret: process.env.IG_CLIENT_SECRET });
-//ig.use({ access_token: process.env.IG_TOKEN });
+//ig.use({ client_id: process.env.IG_CLIENT_ID, client_secret: process.env.IG_CLIENT_SECRET });
+ig.use({ access_token: process.env.IG_TOKEN });
 // NB: i decided to use the token method and obtained it this way: http://jelled.com/instagram/access-token
 // you could have also used curl or implemented the methods in the instagram-node module readme.
 // Not everyone will have an instagram account and this wont be used often.
@@ -33,12 +33,15 @@ router.get('/tag/:name', function(req, res) {
 // endpoint for stream based calls
 router.get('/stream/tag/:name', function(req, res) {
     // check if the subscription exists
-    console.log(req.params.name);
+    
+    // TODO: Might want to not do this as is may not be as useful and the rate
+    // limiting on instagram for a given app/token is quite generous.
+    
     // ig.add_tag_subscription(
     //     req.params.name,
-    //     'https://testing-frostfang-1.c9.io/sub/ig',
+    //     process.env.IG_ENDPOINT_URI,
     //     { 
-    //         verify_token: '6969',
+    //         verify_token: IG_ENDPOINT_VERIFY_TKN,
     //         client_id: process.env.IG_CLIENT_ID, 
     //         client_secret: process.env.IG_CLIENT_SECRET
     //     },
@@ -48,14 +51,14 @@ router.get('/stream/tag/:name', function(req, res) {
     //     }
     // );
     
-    ig.del_subscription({ all: true }, function(err, result, remaining, limit){
-        console.log(arguments);
-        res.send(result);
-    });
+    // ig.del_subscription({ all: true }, function(err, result, remaining, limit){
+    //     console.log(arguments);
+    //     res.send(result);
+    // });
 
    
 
-    // TODO: Getting a 400 error here: 
+    // Was getting a 400 error here: 
     //  Error: OAuthClientException: Missing client_secret URL parameter.]
     //  code: 400,
     //  error_type: 'OAuthClientException',
