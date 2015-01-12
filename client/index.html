@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- HTML5 Hashtag Images - pastiche (working name) -->
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        
+        <title>pastiche</title>
+        <!-- stylesheets -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.css">
+        <style>
+            .page-header{
+                margin-top: 20px;
+            }
+        </style>
+        <!-- script dependencies -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.js"></script>
+        <!-- models, views and collections -->
+        <script type="text/javascript" src="/js/imagefeed.js"></script>
+        <script type="text/javascript" src="/js/search.js"></script>
+        <script type="text/javascript" src="/js/approuter.js"></script>
+        <!-- templates and static items (may need to move to the bottom, not sure) -->
+        <script type="text/html" id="tpl-searchview">
+            
+                <input type="search" class="form-control search" placeholder="Search for a hashtag" value="{{tag}}">
+
+        </script>
+        <script type="text/html" id="tpl-imagefeedview">
+        
+            <div class="panel-body row">
+                {{#imagefeed}} 
+                <div class="col-md-3">
+                    <a href="{{link}}" class="thumbnail">
+                        <img src="{{images.low_resolution.url}}" alt="{{caption.text}}">
+                    </a>
+                </div>
+                {{/imagefeed}}    
+            </div>
+        
+        </script>
+        
+    </head>
+    
+    <body>
+        
+        <div class="container-fluid" id="app">
+ 
+            <div class="page-header page-header-short" id="tagsearch"></div>
+            
+            <div class="panel" id="imagefeed">
+                <!--<div class="panel-heading">-->
+                <!--    <h1>pastiche</h1>-->
+                <!--    <h6>noun. work of art formed from disparate sources</h6>-->
+                <!--</div>-->
+                <!--<div class="panel-body">-->
+                <!--    pastiche will search for a hashtag on Instagram and then display all-->
+                <!--    the images here as a rolling image feed.-->
+                <!--    <br />-->
+                <!--    To get started just enter a tag in the search field above.-->
+                <!--</div>-->
+                
+                <div class="jumbotron container page-header">
+                    <h1>pastiche</h1>
+                    <h6>noun. work of art formed from disparate sources</h6>
+                    <p>
+                        pastiche will search for a hashtag on Instagram and then display all
+                        the images here as a rolling image feed.
+                        <br />
+                        To get started just enter a tag in the search field above.
+                    </p>
+                    <p>
+                        <a class="btn btn-primary btn-lg begin" href="#" role="button">get started</a>
+                    </p>
+                </div>
+                <p class="text-center"><small><a href="http://tcbr.org.au/">tcbr.org.au</a></small></p>
+            </div>
+        </div>
+    </body>
+<head>
+    
+    <!-- I think JQuery 2 or chrome decided to change how scripts are loaded and 
+         everything is grabbed when its declared in order. Meaning before JQ2 i 
+         didn't care about when the body and the templates came in the flow of things
+         JQ or chrome waited for all my js to be loaded then ran my script. 
+         Now it seems as soon as my script is received my js is run immediately
+         Not a huge issue but it leads me to think its a JQ thing because my previous 
+         backbone apps still work and they depend on JQ1...
+         
+         Anyway, thats why this is at the bottom of the page :)  -->
+        
+    <!-- the app -->
+    
+    <script type="text/javascript" src="/js/site-0.1.0.js"></script>
+        
+</head>
+</html>
