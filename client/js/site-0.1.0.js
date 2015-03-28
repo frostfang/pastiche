@@ -47,4 +47,4 @@ var feedtimer = setInterval(function(){
         feedview.refresh();
 }, 20000);
 
-// TODO: Get git working
+
