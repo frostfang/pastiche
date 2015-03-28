@@ -1,0 +1,17 @@
+{
+  "name": "pastiche",
+  "version": "0.0.1",
+  "description": "An app that grabs instagram pictures for a given hashtag and plays through them.",
+  "main": "server.js",
+  "repository": {
+   "type": "git",
+    "url": "https://github.com/frostfang/pastiche.git"
+  },
+  "author": "Michael Barber <michael@mpbarber.com>",
+  "dependencies": {
+    "express": "~4.8.5",
+    "body-parser": "~1.9.3",
+    "underscore": "~1.6.0",
+    "instagram-node": "~0.5.4"
+  }
+}
